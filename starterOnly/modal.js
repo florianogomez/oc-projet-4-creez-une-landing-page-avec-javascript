@@ -40,14 +40,17 @@ function launchFormModal() {
   modalForm.style.display = "block";
 }
 
+// Launch modal confirmation
 function launchConfirmationModal() {
   modalConfirmation.style.display = "block";
 }
 
+// Close all modals
 function closeModal() {
   modals.forEach(modal => modal.style.display = "none");
 }
 
+// Form validation function
 function validate() {
   try {
     return validateFirstNameInput()
@@ -153,6 +156,13 @@ function validateTermsOfUseCheckbox () {
   return true;
 }
 
+/**
+Displays an error message and styles the input field for invalid input.
+@param {HTMLElement} inputElement - The input field element that needs to be styled.
+@param {HTMLElement} inputErrorElement - The error message element to display the error message.
+@param {string} errorMessage - The error message to be displayed.
+@returns {void}
+ */
 function showInputError(inputElement, inputErrorElement, errorMessage) {
   inputElement.classList.add("field-error");
 	inputErrorElement.style.display = "block";
@@ -161,12 +171,24 @@ function showInputError(inputElement, inputErrorElement, errorMessage) {
   console.log(inputElement.name, "=>", inputElement.value)
 }
 
+/**
+Hides the error message and styles for an invalid input field.
+@param {HTMLElement} inputElement - The input field element that needs to be styled.
+@param {HTMLElement} inputErrorElement - The error message element to display the error message.
+@returns {void}
+ */
 function hideInputError(inputElement, inputErrorElement) {
   inputElement.classList.remove("field-error");
 	inputErrorElement.textContent = "";
   inputErrorElement.style.display = "none";
 }
 
+/**
+This function is called when the DOM content has been fully loaded.
+It initializes event listeners for signup buttons, modal close buttons,
+form input fields, and form submission.
+@returns {void}
+ */
 function onDocumentReady() {
 	console.log("Document is ready");
 	signupBtn.forEach((btn) => btn.addEventListener("click", launchFormModal));
@@ -180,12 +202,6 @@ function onDocumentReady() {
     { input: quantityInput, error: quantityError },
     { input: termsOfUseCheckbox, error: termsOfUseCheckboxError },
   ];
-
-  firstNameInput.value = "Floriano";
-  lastNameInput.value = "Gomez";
-  emailInput.value = "floriano.gomez@example.com";
-  birthdateInput.value = "1990-01-01";
-  quantityInput.value = "10";
 
   inputs.forEach((input) => {
     input.input.addEventListener("change", () => {

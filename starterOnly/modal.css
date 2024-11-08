@@ -617,8 +617,6 @@ footer {
   text-align: center;
 }
 
-
-
 @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -649,7 +647,5 @@ footer {
     padding: 8px 41px;
     margin-top: 16px;
   }
-
-
 } 
 
