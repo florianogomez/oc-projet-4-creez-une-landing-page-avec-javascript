@@ -69,7 +69,7 @@ function validateFirstNameInput() {
   // At least 2 characters
   // Required
 
-  const firstName = firstNameInput.value
+  const firstName = firstNameInput.value;
   if(firstName.length < 2) {
     showInputError(firstNameInput, firstNameError, "Veuillez entrer 2 caractères ou plus.");
     return false;
@@ -83,7 +83,7 @@ function validateLastNameInput() {
 	// At least 2 characters
 	// Required
 
-  const lastName = lastNameInput.value
+  const lastName = lastNameInput.value;
   if(lastName.length < 2) {
     showInputError(lastNameInput, lastNameError, "Veuillez entrer 2 caractères ou plus.");
     return false;
@@ -97,7 +97,7 @@ function validateEmailInput() {
   // Valid email format
   // Required
 
-  const email = emailInput.value
+  const email = emailInput.value;
   if(!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
     showInputError(emailInput, emailError, "Veuillez entrer une adresse email valide.");
     return false;
@@ -114,7 +114,7 @@ function validateBirthdateInput() {
   const frRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
   const enRegex = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
 
-  const birthdate = birthdateInput.value
+  const birthdate = birthdateInput.value;
   if(!birthdate.match(enRegex)) {
     showInputError(birthdateInput, birthdateError, "Veuillez entrer une date de naissance valide.");
     return false;

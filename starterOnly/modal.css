@@ -3,7 +3,6 @@
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
   --form-label-font-size: 14px;
-  --mobile-breakpoint: 768px;
 }
 * {
   box-sizing: border-box;
@@ -74,7 +73,7 @@ img {
   color: #ff0000;
 }
 
-@media screen and (max-width: var(--mobile-breakpoint)) {
+@media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -82,7 +81,7 @@ img {
   }
 }
 
-@media screen and (max-width: var(--mobile-breakpoint)) {
+@media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -559,6 +558,7 @@ footer {
   font-size: 0.8rem;
   font-size: 10px;
   font-weight: 400;
+  display: block;
 }
 
 @keyframes shake-head {
