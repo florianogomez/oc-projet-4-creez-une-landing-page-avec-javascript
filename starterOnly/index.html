@@ -70,9 +70,8 @@
                   type="text"
                   id="firstName"
                   name="firstName"
-                  minlength="2"
-                  required
                 /><br>
+                <div class="form-validation-error" id="firstName-error"></div>
               </div>
               <div
                 class="formData">
@@ -82,8 +81,8 @@
                   type="text"
                   id="lastName"
                   name="lastName"
-                  required
                 /><br>
+                <div class="form-validation-error" id="lastName-error"></div>
               </div>
               <div
                 class="formData">
@@ -94,6 +93,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <div class="form-validation-error" id="email-error"></div>
               </div>
               <div
                 class="formData">
@@ -104,11 +104,13 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <div class="form-validation-error" id="birthdate-error"></div>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" value="0" min="0" max="99" required>
+                <input type="number" class="text-control" id="quantity" name="quantity"><br>
+                <div class="form-validation-error" id="quantity-error"></div>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -193,7 +195,7 @@
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
-                  <div class="form-validation-error" id="checkbox1-error">Vous devez cocher cette case</div>
+                  <div class="form-validation-error" id="checkbox1-error"></div>
                 </label>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
