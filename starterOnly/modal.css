@@ -527,3 +527,34 @@ footer {
   }
 }
 
+.form-validation-error {
+  color: red;
+  font-size: 0.8rem;
+  margin: 0px;
+}
+
+@keyframes shake-head {
+  0% {
+    transform: translateX(0px);
+  }
+  10% {
+    transform: translateX(-3px);
+  }
+  20% {
+    transform: translateX(3px);
+  }
+  30% {
+    transform: translateX(-3px);
+  }
+  40% {
+    transform: translateX(3px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+}
+
+.field-error,
+.field-error + label {
+  animation: shake-head 0.5s ease-in-out;
+}
