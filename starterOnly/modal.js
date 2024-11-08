@@ -8,10 +8,13 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
+const modals = document.querySelectorAll(".bground");
+const modalForm = document.querySelector(".signup-modal-form");
+const modalConfirmation = document.querySelector(".confirmation-modal-form");
+const signupBtn = document.querySelectorAll(".btn-signup");
+const modalCloseBtn = document.querySelectorAll(".close, .btn-close");
 const formData = document.querySelectorAll(".formData");
-const modalCloseBtn = document.querySelectorAll(".close");
+const form = document.querySelector('form[name="reserve"]');
 
 // Inputs
 const firstNameInput = document.getElementById("firstName");
@@ -33,12 +36,16 @@ const termsOfUseCheckboxError = document.getElementById("checkbox1-error");
 document.addEventListener("DOMContentLoaded", onDocumentReady);
 
 // launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
+function launchFormModal() {
+  modalForm.style.display = "block";
+}
+
+function launchConfirmationModal() {
+  modalConfirmation.style.display = "block";
 }
 
 function closeModal() {
-  modalbg.style.display = "none";
+  modals.forEach(modal => modal.style.display = "none");
 }
 
 function validate() {
@@ -162,7 +169,7 @@ function hideInputError(inputElement, inputErrorElement) {
 
 function onDocumentReady() {
 	console.log("Document is ready");
-	modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+	signupBtn.forEach((btn) => btn.addEventListener("click", launchFormModal));
 	modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
   const inputs = [
@@ -184,6 +191,18 @@ function onDocumentReady() {
     input.input.addEventListener("change", () => {
       hideInputError(input.input, input.error);
     });
+  });
+
+  form.addEventListener("submit", function (event) {
+		event.preventDefault();
+
+		if (validate()) {
+			console.log("Form is valid");
+      closeModal();
+      launchConfirmationModal();
+		} else {
+			console.log("Form is invalid");
+		}
   });
 }
 
