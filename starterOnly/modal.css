@@ -2,6 +2,8 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+  --form-label-font-size: 14px;
+  --mobile-breakpoint: 768px;
 }
 * {
   box-sizing: border-box;
@@ -56,19 +58,23 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
+
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
 }
 
 .topnav .icon {
   display: none;
+  color: #ff0000;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -76,7 +82,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: var(--mobile-breakpoint)) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -89,17 +95,6 @@ img {
     text-align: left;
   }
 }
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -172,7 +167,7 @@ main {
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 536px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -190,7 +185,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: var(--form-label-font-size);
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -244,7 +239,7 @@ input[data-error]::after {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 2px solid #fff;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -252,6 +247,10 @@ input[data-error]::after {
   left: -30px;
   top: -1px;
   transition: 0.3s;
+}
+
+.checkbox-label .checkbox-icon {
+  border: 1px solid #fff;
 }
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
@@ -276,6 +275,11 @@ input[data-error]::after {
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
+
+.checkbox-input:checked + .checkbox-label .checkbox-icon {
+  border: 1px solid #279e7a;
+}
+
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
@@ -478,7 +482,18 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+.mobile-label{
+  display: none;
+}
 @media screen and (max-width: 800px) {
+  .topnav {
+    padding-inline-start: 16px;
+    padding-top: 24px;
+  }
+  .header-logo img {
+    width: 103px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +501,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px 50px 0px 0px;
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +510,13 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
+    margin-top: 16px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -509,7 +525,8 @@ footer {
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
-    padding: 12px 35px;
+    padding: 8px 35px;
+    font-size: 0.8rem;
   }
   .copyrights {
     margin-top: 50px;
@@ -527,10 +544,21 @@ footer {
   }
 }
 
+@keyframes modalopen-reversed {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 .form-validation-error {
-  color: red;
+  color: #FF4E60;
   font-size: 0.8rem;
-  margin: 0px;
+  font-size: 10px;
+  font-weight: 400;
 }
 
 @keyframes shake-head {
@@ -559,9 +587,14 @@ footer {
   animation: shake-head 0.5s ease-in-out;
 }
 
+.field-error {
+  border: 1px solid #FF4E60;
+  margin-top: 5px;
+}
+
 .confirmation-modal-form .content {
-  width: 536px;
-  height: 850.61px;
+  max-width: 536px;
+  height: 90vh;
 }
 
 .confirmation-modal-form .content .modal-body {
@@ -583,3 +616,40 @@ footer {
   line-height: 51.34px;
   text-align: center;
 }
+
+
+
+@media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+
+  .content {
+    position: absolute;
+    bottom: 0;
+    animation-name: modalopen-reversed;
+    animation-duration: var(--modal-duration);
+    margin: 0px;
+    height: 90vh;
+  }
+
+  .mobile-label{
+    display: block;
+    margin-top: 5px;
+  }
+
+  .desktop-label {
+    display: none;
+  }
+
+  .btn-submit {
+    padding: 8px 41px;
+    margin-top: 16px;
+  }
+
+
+} 
+
