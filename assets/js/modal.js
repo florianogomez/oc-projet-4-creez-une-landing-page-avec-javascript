@@ -130,8 +130,9 @@ function validateQuantityInput() {
 	// At most 99
 
 	const quantity = quantityInput.value;
+  console.log("Quantity :", quantity);
 
-	if (isNaN(quantity) || quantity < 0 || quantity > 99) {
+	if (quantity.trim().length == 0 || isNaN(Number(quantity)) || Number(quantity) < 0 || Number(quantity > 99)) {
 		showInputError(
 			quantityInput,
 			quantityError,
